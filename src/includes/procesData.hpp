@@ -8,6 +8,9 @@
 
 class procesData
 {
+    writeFile writeF;
+    outConsole outCon;
+
 private:
     int N;
     int step = 1;

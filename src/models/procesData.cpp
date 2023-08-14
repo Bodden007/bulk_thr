@@ -66,18 +66,11 @@ void procesData::outBulk(std::vector<std::string> &bulk)
 {
     std::string out_balk;
 
-    dataTime dataT;
-    std::string timeDat = dataT.timeSyst();
-    std::string fileName = "bulk";
-    fileName += timeDat + ".log";
-
-    writeFile writeF;
-    outConsole outCon;
-
     boost::signals2::signal<void(std::string)> sig;
-    sig.connect(boost::bind(&writeFile::outFile,
+
+    sig.connect(boost::bind(&writeFile::thrFile,
                             &writeF, std::placeholders::_1));
-    sig.connect(boost::bind(&outConsole::showConsol,
+    sig.connect(boost::bind(&outConsole::thrConsol,
                             &outCon, std::placeholders::_1));
 
     if (!bulk.empty())
@@ -90,6 +83,7 @@ void procesData::outBulk(std::vector<std::string> &bulk)
 
         sig(out_balk);
         bulk.clear();
+
         std::cout << std::endl;
     }
 }
