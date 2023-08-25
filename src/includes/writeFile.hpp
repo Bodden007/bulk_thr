@@ -11,8 +11,8 @@ class writeFile
 {
     std::mutex mtx;
     std::condition_variable cv;
-    std::thread file1;
-    std::thread file2;
+    // std::thread file1;
+    // std::thread file2;
 
 private:
     bool ready = false;

@@ -2,19 +2,20 @@
 
 void writeFile::thrFile(std::string out_balk)
 {
+
     if (!flagQueue)
     {
-        file1 = std::thread(outFile, this, out_balk, "file1");
+        std::thread file1(outFile, this, out_balk, "file1");
         flagQueue = true;
         go();
-        file1.join();
+        file1.detach();
     }
     else
     {
-        file2 = std::thread(outFile, this, out_balk, "file2");
+        std::thread file1(outFile, this, out_balk, "file2");
         flagQueue = false;
         go();
-        file2.join();
+        file1.detach();
     }
 }
 
